@@ -4,7 +4,7 @@ import pickle
 app = Flask(__name__)
 
 # Load the trained machine learning model
-model = pickle.load(open('models/model_BMI.pkl', 'rb'))  # Replace "your_model.pkl" with your model file name
+model = pickle.load(open('models/model_pipeSVM.pkl', 'rb'))  # Replace "your_model.pkl" with your model file name
 
 @app.route('/')
 def index():
@@ -15,12 +15,12 @@ def predict():
     try:
         # Get form data from the request
         gender = request.form['gender']
-        gender = 0 if gender == "Male" else 1
+        #gender = 0 if gender == "Male" else 1
         height = float(request.form['height'])
         weight = float(request.form['weight'])
 
         # Perform prediction using the model
-        prediction = model.predict([[gender, height, weight]])
+        prediction = model.predict([[height, weight]])
 
         # Map prediction class labels to GMI labels
         if prediction[0] == 0:
