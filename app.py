@@ -36,7 +36,7 @@ def predict():
         if prediction[0] == 5:
             gmi_label ="Extreme Obesity"
 
-        return render_template('Untitled-1.html', prediction_result=f'Predicted GMI: {gmi_label}')
+        return render_template('Untitled-1.html', prediction_result=f'Predicted BMI: {gmi_label}')
     except Exception as e:
         return render_template('Untitled-1.html', prediction_result=f'Error: {str(e)}')
 
